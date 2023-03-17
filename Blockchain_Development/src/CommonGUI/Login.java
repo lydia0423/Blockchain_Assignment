@@ -1,4 +1,4 @@
-package CommonClass;
+package CommonGUI;
 
 public class Login {
 

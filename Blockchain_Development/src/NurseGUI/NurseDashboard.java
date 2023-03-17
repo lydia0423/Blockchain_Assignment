@@ -1,4 +1,4 @@
-package NurseClass;
+package NurseGUI;
 
 public class NurseDashboard {
 

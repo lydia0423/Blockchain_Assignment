@@ -1,4 +1,4 @@
-package DoctorClass;
+package DoctorGUI;
 
 public class DoctorDashboard {
 
