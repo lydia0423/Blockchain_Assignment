@@ -52,10 +52,10 @@ public class NurseDashboard extends javax.swing.JFrame {
         jButton1.setFont(new java.awt.Font("Segoe UI Semibold", 2, 14)); // NOI18N
         jButton1.setText("Logout");
 
-        jLabel2.setFont(new java.awt.Font("Sitka Subheading", 0, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Sitka Subheading", 1, 14)); // NOI18N
         jLabel2.setText("NFC bar-code");
 
-        jLabel5.setFont(new java.awt.Font("Sitka Subheading", 0, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Sitka Subheading", 1, 14)); // NOI18N
         jLabel5.setText("Date");
 
         jButton3.setBackground(new java.awt.Color(102, 153, 255));
@@ -65,10 +65,10 @@ public class NurseDashboard extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         jLabel1.setText("Nurse (Admin Dashboard)");
 
-        jLabel4.setFont(new java.awt.Font("Sitka Subheading", 0, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Sitka Subheading", 1, 14)); // NOI18N
         jLabel4.setText("IC Number / Passport");
 
-        jLabel3.setFont(new java.awt.Font("Sitka Subheading", 0, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Sitka Subheading", 1, 14)); // NOI18N
         jLabel3.setText("Full Name");
 
         jButton2.setBackground(new java.awt.Color(102, 153, 255));
@@ -77,7 +77,7 @@ public class NurseDashboard extends javax.swing.JFrame {
 
         txtNFCbarcode.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
 
-        jLabel6.setFont(new java.awt.Font("Sitka Subheading", 0, 14)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Sitka Subheading", 1, 14)); // NOI18N
         jLabel6.setText("Doctor's Name");
 
         txtICPassport.setBackground(new java.awt.Color(153, 153, 153));
@@ -94,7 +94,7 @@ public class NurseDashboard extends javax.swing.JFrame {
             }
         });
 
-        jLabel7.setFont(new java.awt.Font("Sitka Subheading", 0, 14)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Sitka Subheading", 1, 14)); // NOI18N
         jLabel7.setText("Time");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);

@@ -59,41 +59,41 @@ public class AddMedicalRecord extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 204));
 
-        jLabel3.setFont(new java.awt.Font("Sitka Subheading", 0, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Sitka Subheading", 1, 14)); // NOI18N
         jLabel3.setText("IC Number / Passport");
 
-        jLabel8.setFont(new java.awt.Font("Sitka Subheading", 0, 14)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Sitka Subheading", 1, 14)); // NOI18N
         jLabel8.setText("Nationality");
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
         jLabel1.setText("Manage Medical Records");
 
-        jLabel5.setFont(new java.awt.Font("Sitka Subheading", 0, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Sitka Subheading", 1, 14)); // NOI18N
         jLabel5.setText("Address");
 
-        jLabel4.setFont(new java.awt.Font("Sitka Subheading", 0, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Sitka Subheading", 1, 14)); // NOI18N
         jLabel4.setText("Contact Number");
 
         btnBack.setBackground(new java.awt.Color(102, 153, 255));
         btnBack.setFont(new java.awt.Font("Segoe UI Semibold", 2, 14)); // NOI18N
         btnBack.setText("Back");
 
-        jLabel2.setFont(new java.awt.Font("Sitka Subheading", 0, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Sitka Subheading", 1, 14)); // NOI18N
         jLabel2.setText("Full Name");
 
-        jLabel7.setFont(new java.awt.Font("Sitka Subheading", 0, 14)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Sitka Subheading", 1, 14)); // NOI18N
         jLabel7.setText("Relatives");
 
-        jLabel6.setFont(new java.awt.Font("Sitka Subheading", 0, 14)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Sitka Subheading", 1, 14)); // NOI18N
         jLabel6.setText("Date Of Birth");
 
-        jLabel11.setFont(new java.awt.Font("Sitka Subheading", 0, 14)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Sitka Subheading", 1, 14)); // NOI18N
         jLabel11.setText("Doctor's Note");
 
-        jLabel9.setFont(new java.awt.Font("Sitka Subheading", 0, 14)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Sitka Subheading", 1, 14)); // NOI18N
         jLabel9.setText("NFC bar-code");
 
-        jLabel10.setFont(new java.awt.Font("Sitka Subheading", 0, 14)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Sitka Subheading", 1, 14)); // NOI18N
         jLabel10.setText("History Medical Record");
 
         txtFullName.setBackground(new java.awt.Color(153, 153, 153));

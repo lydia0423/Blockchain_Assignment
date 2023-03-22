@@ -168,7 +168,7 @@
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Sitka Subheading" size="14" style="0"/>
+              <Font name="Sitka Subheading" size="14" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="IC Number / Passport"/>
           </Properties>
@@ -176,7 +176,7 @@
         <Component class="javax.swing.JLabel" name="jLabel8">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Sitka Subheading" size="14" style="0"/>
+              <Font name="Sitka Subheading" size="14" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Nationality"/>
           </Properties>
@@ -192,7 +192,7 @@
         <Component class="javax.swing.JLabel" name="jLabel5">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Sitka Subheading" size="14" style="0"/>
+              <Font name="Sitka Subheading" size="14" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Address"/>
           </Properties>
@@ -200,7 +200,7 @@
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Sitka Subheading" size="14" style="0"/>
+              <Font name="Sitka Subheading" size="14" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Contact Number"/>
           </Properties>
@@ -219,7 +219,7 @@
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Sitka Subheading" size="14" style="0"/>
+              <Font name="Sitka Subheading" size="14" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Full Name"/>
           </Properties>
@@ -227,7 +227,7 @@
         <Component class="javax.swing.JLabel" name="jLabel7">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Sitka Subheading" size="14" style="0"/>
+              <Font name="Sitka Subheading" size="14" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Relatives"/>
           </Properties>
@@ -235,7 +235,7 @@
         <Component class="javax.swing.JLabel" name="jLabel6">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Sitka Subheading" size="14" style="0"/>
+              <Font name="Sitka Subheading" size="14" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Date Of Birth"/>
           </Properties>
@@ -243,7 +243,7 @@
         <Component class="javax.swing.JLabel" name="jLabel11">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Sitka Subheading" size="14" style="0"/>
+              <Font name="Sitka Subheading" size="14" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Doctor&apos;s Note"/>
           </Properties>
@@ -251,7 +251,7 @@
         <Component class="javax.swing.JLabel" name="jLabel9">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Sitka Subheading" size="14" style="0"/>
+              <Font name="Sitka Subheading" size="14" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="NFC bar-code"/>
           </Properties>
@@ -259,7 +259,7 @@
         <Component class="javax.swing.JLabel" name="jLabel10">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Sitka Subheading" size="14" style="0"/>
+              <Font name="Sitka Subheading" size="14" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="History Medical Record"/>
           </Properties>

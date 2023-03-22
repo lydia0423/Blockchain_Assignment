@@ -56,28 +56,28 @@ public class NewAccountRegistration extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
         jLabel1.setText("New Patient Account Registration");
 
-        jLabel2.setFont(new java.awt.Font("Sitka Subheading", 0, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Sitka Subheading", 1, 14)); // NOI18N
         jLabel2.setText("Full Name");
 
-        jLabel3.setFont(new java.awt.Font("Sitka Subheading", 0, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Sitka Subheading", 1, 14)); // NOI18N
         jLabel3.setText("IC Number / Passport");
 
-        jLabel4.setFont(new java.awt.Font("Sitka Subheading", 0, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Sitka Subheading", 1, 14)); // NOI18N
         jLabel4.setText("Contact Number");
 
-        jLabel5.setFont(new java.awt.Font("Sitka Subheading", 0, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Sitka Subheading", 1, 14)); // NOI18N
         jLabel5.setText("Address");
 
-        jLabel6.setFont(new java.awt.Font("Sitka Subheading", 0, 14)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Sitka Subheading", 1, 14)); // NOI18N
         jLabel6.setText("Date of Birth");
 
-        jLabel7.setFont(new java.awt.Font("Sitka Subheading", 0, 14)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Sitka Subheading", 1, 14)); // NOI18N
         jLabel7.setText("Relatives");
 
-        jLabel8.setFont(new java.awt.Font("Sitka Subheading", 0, 14)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Sitka Subheading", 1, 14)); // NOI18N
         jLabel8.setText("Nationality");
 
-        jLabel9.setFont(new java.awt.Font("Sitka Subheading", 0, 14)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Sitka Subheading", 1, 14)); // NOI18N
         jLabel9.setText("NFC bar-code");
 
         btnBack.setBackground(new java.awt.Color(102, 153, 255));
@@ -126,13 +126,17 @@ public class NewAccountRegistration extends javax.swing.JFrame {
                             .addGap(205, 205, 205)
                             .addComponent(btnSignUp))
                         .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel5)
-                                .addComponent(txtContactNum, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel3)
-                                .addComponent(txtFullName, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel2))
-                            .addGap(84, 84, 84)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(txtContactNum, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel3)
+                                        .addComponent(txtFullName, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel2))
+                                    .addGap(84, 84, 84))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabel5)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel6)
                                 .addComponent(ChooserDateOfBirth, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)

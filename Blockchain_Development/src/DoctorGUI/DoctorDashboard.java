@@ -43,7 +43,7 @@ public class DoctorDashboard extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
         jLabel1.setText("Doctor Dashboard");
 
-        jLabel2.setFont(new java.awt.Font("Sitka Subheading", 0, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Sitka Subheading", 1, 14)); // NOI18N
         jLabel2.setText("Appointment List");
 
         btnLogout.setBackground(new java.awt.Color(102, 153, 255));
