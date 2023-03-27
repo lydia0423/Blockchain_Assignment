@@ -98,11 +98,11 @@ public class NurseDashboard extends javax.swing.JFrame {
         jLabel6.setText("Doctor's Name");
         jLabel6.setFont(new java.awt.Font("Sitka Subheading", 1, 14)); // NOI18N
 
-        txtICPassport.setBackground(new java.awt.Color(153, 153, 153));
         txtICPassport.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        txtICPassport.setBackground(new java.awt.Color(153, 153, 153));
 
-        txtName.setBackground(new java.awt.Color(153, 153, 153));
         txtName.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        txtName.setBackground(new java.awt.Color(153, 153, 153));
 
         cmbDoctorName.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         cmbDoctorName.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
@@ -118,7 +118,10 @@ public class NurseDashboard extends javax.swing.JFrame {
         jLabel7.setText("Time");
         jLabel7.setFont(new java.awt.Font("Sitka Subheading", 1, 14)); // NOI18N
 
+        dpAppointmentDate.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+
         cmbAppointmentTime.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Time--", "7.00", "7.15", "7.30", "7.45", "8.00", "8.15", "8.30", "8.45", "9.00", "9.15", "9.30", "9.45", "10.00", "10.15", "10.30", "10.45", "11.00" }));
+        cmbAppointmentTime.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -145,7 +148,7 @@ public class NurseDashboard extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(254, 254, 254)
                 .addComponent(btnBookAppointment)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                 .addComponent(btnRegisterNewPatient)
                 .addGap(35, 35, 35))
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -170,7 +173,7 @@ public class NurseDashboard extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtUserId, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(dpAppointmentDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(dpAppointmentDate, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(13, 13, 13)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -184,12 +187,12 @@ public class NurseDashboard extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(cmbAppointmentTime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cmbAppointmentTime, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(cmbDoctorName, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBookAppointment, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnRegisterNewPatient, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
