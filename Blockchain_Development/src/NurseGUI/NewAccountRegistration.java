@@ -1,20 +1,21 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package NurseGUI;
 
-/**
- *
- * @author User
- */
-public class NewAccountRegistration extends javax.swing.JFrame {
+import Classes.Admin;
+import Classes.Patient;
+import HelperClass.Asymmetric;
+import HelperClass.KeyAccess;
+import java.security.PrivateKey;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
-    /**
-     * Creates new form NewAccountRegistration
-     */
+public class NewAccountRegistration extends javax.swing.JFrame {
+    final private static String filePath = System.getProperty("user.dir") + System.getProperty("file.separator") + "src" + System.getProperty("file.separator") + "Database";
+    
     public NewAccountRegistration() {
         initComponents();
+        txtUserId.setEditable(false);
+        txtUserId.setText(Patient.generatePatientId());
     }
 
     /**
@@ -38,78 +39,79 @@ public class NewAccountRegistration extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         btnBack = new javax.swing.JButton();
         btnSignUp = new javax.swing.JButton();
-        txtFullName = new javax.swing.JTextField();
+        txtName = new javax.swing.JTextField();
         txtContactNum = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtAddress = new javax.swing.JTextArea();
         txtICPassport = new javax.swing.JTextField();
-        txtNFCbarcode = new javax.swing.JTextField();
+        txtUserId = new javax.swing.JTextField();
         txtRelatives = new javax.swing.JTextField();
-        comboxNationality = new javax.swing.JComboBox<>();
-        ChooserDateOfBirth = new com.toedter.calendar.JDateChooser();
+        cmbNationality = new javax.swing.JComboBox<>();
+        dpDOB = new com.github.lgooddatepicker.components.DatePicker();
+        txtEmail = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 204));
         jPanel1.setPreferredSize(new java.awt.Dimension(700, 400));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
         jLabel1.setText("New Patient Account Registration");
+        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
 
-        jLabel2.setFont(new java.awt.Font("Sitka Subheading", 1, 14)); // NOI18N
         jLabel2.setText("Full Name");
+        jLabel2.setFont(new java.awt.Font("Sitka Subheading", 1, 14)); // NOI18N
 
-        jLabel3.setFont(new java.awt.Font("Sitka Subheading", 1, 14)); // NOI18N
         jLabel3.setText("IC Number / Passport");
+        jLabel3.setFont(new java.awt.Font("Sitka Subheading", 1, 14)); // NOI18N
 
-        jLabel4.setFont(new java.awt.Font("Sitka Subheading", 1, 14)); // NOI18N
         jLabel4.setText("Contact Number");
+        jLabel4.setFont(new java.awt.Font("Sitka Subheading", 1, 14)); // NOI18N
 
-        jLabel5.setFont(new java.awt.Font("Sitka Subheading", 1, 14)); // NOI18N
         jLabel5.setText("Address");
+        jLabel5.setFont(new java.awt.Font("Sitka Subheading", 1, 14)); // NOI18N
 
-        jLabel6.setFont(new java.awt.Font("Sitka Subheading", 1, 14)); // NOI18N
         jLabel6.setText("Date of Birth");
+        jLabel6.setFont(new java.awt.Font("Sitka Subheading", 1, 14)); // NOI18N
 
-        jLabel7.setFont(new java.awt.Font("Sitka Subheading", 1, 14)); // NOI18N
         jLabel7.setText("Relatives");
+        jLabel7.setFont(new java.awt.Font("Sitka Subheading", 1, 14)); // NOI18N
 
-        jLabel8.setFont(new java.awt.Font("Sitka Subheading", 1, 14)); // NOI18N
         jLabel8.setText("Nationality");
+        jLabel8.setFont(new java.awt.Font("Sitka Subheading", 1, 14)); // NOI18N
 
-        jLabel9.setFont(new java.awt.Font("Sitka Subheading", 1, 14)); // NOI18N
         jLabel9.setText("NFC bar-code");
+        jLabel9.setFont(new java.awt.Font("Sitka Subheading", 1, 14)); // NOI18N
 
+        btnBack.setText("Back");
         btnBack.setBackground(new java.awt.Color(102, 153, 255));
         btnBack.setFont(new java.awt.Font("Segoe UI Semibold", 2, 14)); // NOI18N
-        btnBack.setText("Back");
 
+        btnSignUp.setText("Sign Up");
         btnSignUp.setBackground(new java.awt.Color(102, 153, 255));
         btnSignUp.setFont(new java.awt.Font("Segoe UI Semibold", 2, 14)); // NOI18N
-        btnSignUp.setText("Sign Up");
+        btnSignUp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSignUpActionPerformed(evt);
+            }
+        });
 
-        txtFullName.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        txtName.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
 
         txtContactNum.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
 
         txtAddress.setColumns(20);
-        txtAddress.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         txtAddress.setRows(5);
+        txtAddress.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jScrollPane1.setViewportView(txtAddress);
 
         txtICPassport.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
 
-        txtNFCbarcode.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        txtUserId.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
 
         txtRelatives.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        txtRelatives.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtRelativesActionPerformed(evt);
-            }
-        });
 
-        comboxNationality.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        comboxNationality.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Malaysia", "Foreign" }));
+        cmbNationality.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Malaysia", "Foreign" }));
+        cmbNationality.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -118,35 +120,41 @@ public class NewAccountRegistration extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(34, 34, 34)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
-                    .addComponent(txtICPassport, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(205, 205, 205)
-                            .addComponent(btnSignUp))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(txtContactNum, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel3)
-                                        .addComponent(txtFullName, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel2))
-                                    .addGap(84, 84, 84))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel5)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel6)
-                                .addComponent(ChooserDateOfBirth, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel7)
-                                .addComponent(comboxNationality, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtNFCbarcode, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel9)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(txtContactNum, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(jLabel3)
+                                                .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(jLabel2))
+                                            .addGap(84, 84, 84))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                            .addComponent(jLabel5)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(95, 95, 95)))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel7)
+                                    .addComponent(cmbNationality, 0, 200, Short.MAX_VALUE)
+                                    .addComponent(txtUserId, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                                    .addComponent(jLabel9)
+                                    .addComponent(dpDOB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txtEmail))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnSignUp)))
+                        .addContainerGap())
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(txtICPassport, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(170, Short.MAX_VALUE)
+                .addContainerGap(147, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(123, 123, 123)
                 .addComponent(btnBack)
@@ -157,46 +165,49 @@ public class NewAccountRegistration extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel8)
                         .addComponent(txtRelatives, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(0, Short.MAX_VALUE)))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(btnBack))
-                .addGap(43, 43, 43)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtFullName, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ChooserDateOfBirth, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtICPassport, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtContactNum, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(comboxNationality, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel9))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSignUp)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(txtNFCbarcode, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnSignUp)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(btnBack))
+                        .addGap(43, 43, 43)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel6))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(dpDOB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel7))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtICPassport, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtContactNum, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cmbNationality, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel9))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(txtUserId, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(11, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
@@ -217,15 +228,57 @@ public class NewAccountRegistration extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 402, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtRelativesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRelativesActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtRelativesActionPerformed
+    private void btnSignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignUpActionPerformed
+        try {
+            String userId, name, icOrPassportNumber, email, contactNumber, address, dob, relatives, nationality;
+            userId = txtUserId.getText();
+            name = txtName.getText();
+            icOrPassportNumber = txtICPassport.getText();
+            email = txtEmail.getText();
+            contactNumber = txtContactNum.getText();
+            address = txtAddress.getText();
+            dob = dpDOB.getDate().toString();
+            relatives = txtRelatives.getText();
+            nationality = cmbNationality.getSelectedItem().toString();
+            // verify all the inputs are filled
+            if(name.isEmpty() || icOrPassportNumber.isEmpty() || email.isEmpty() || contactNumber.isEmpty() || dob.isEmpty() || address.isEmpty() || relatives.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Please ensure that all fields have been filled in", "Invalid Data Entered", JOptionPane.ERROR_MESSAGE);
+                return;
+            }   
+            
+            // create an instance Patient and save it to the database
+            Patient patient = new Patient(userId, name, icOrPassportNumber, contactNumber, email, address, dob, relatives, nationality);
+            Patient.savePatientRegistration(patient);
+            
+            // save into blockchain
+            String priFilePath = filePath + "/KeyPair/Patient/PrivateKey/" + userId;
+            PrivateKey patientPrivateKey = KeyAccess.getPrivateKey(priFilePath);
+            Patient patientBlockchain = new Patient(userId);
+            Patient.savePatientRegistrationIntoBlockchain(patientBlockchain, patientPrivateKey);
+            
+            int n = JOptionPane.showConfirmDialog(null, "Registration has been saved. Add another admin account?", "Admin account added", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        
+            if(n == JOptionPane.YES_NO_OPTION){
+                // if yes, reset the form
+                txtName.setText("");
+                txtICPassport.setText("");
+                txtEmail.setText("");
+                txtAddress.setText("");
+                txtContactNum.setText("");
+                txtRelatives.setText("");
+                dpDOB.setDateToToday();
+                txtUserId.setText(Admin.generateAdminId());
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(NewAccountRegistration.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnSignUpActionPerformed
 
     /**
      * @param args the command line arguments
@@ -263,10 +316,10 @@ public class NewAccountRegistration extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private com.toedter.calendar.JDateChooser ChooserDateOfBirth;
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnSignUp;
-    private javax.swing.JComboBox<String> comboxNationality;
+    private javax.swing.JComboBox<String> cmbNationality;
+    private com.github.lgooddatepicker.components.DatePicker dpDOB;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -280,9 +333,10 @@ public class NewAccountRegistration extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea txtAddress;
     private javax.swing.JTextField txtContactNum;
-    private javax.swing.JTextField txtFullName;
+    private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtICPassport;
-    private javax.swing.JTextField txtNFCbarcode;
+    private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtRelatives;
+    private javax.swing.JTextField txtUserId;
     // End of variables declaration//GEN-END:variables
 }
