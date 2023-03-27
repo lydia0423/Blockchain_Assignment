@@ -1,5 +1,6 @@
 package Classes;
 
+import DoctorGUI.AddMedicalRecord;
 import DoctorGUI.DoctorDashboard;
 import HelperClass.Asymmetric;
 import HelperClass.KeyAccess;
@@ -66,7 +67,7 @@ public class LoginVerification {
             for(Doctor doctorAccount : allDoctorAccounts){
                 if(userName.equals(doctorAccount.getEmail()) && password.equals(authenticatePassword("Doctor", doctorAccount.getUserId(), doctorAccount.getPassword()))){
                     JOptionPane.showMessageDialog(null, "Valid Credentials", "Login Success!", JOptionPane.INFORMATION_MESSAGE);
-                    new DoctorDashboard(doctorAccount.getUserId()).setVisible(true);
+                    new AddMedicalRecord().setVisible(true);
                     jframe.dispose();
                 }else{
                     JOptionPane.showMessageDialog(null, "Invalid Credentials", "Login Failed!", JOptionPane.ERROR_MESSAGE);
