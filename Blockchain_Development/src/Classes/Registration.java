@@ -11,11 +11,9 @@ public class Registration {
         this.email = email;
     }
     
-    public Registration(String userId, String name, String icOrPassportNumber) {
+    public Registration(String userId) {
         super();
         this.userId = userId;
-        this.name = name;
-        this.icOrPassportNumber = icOrPassportNumber;
     }
     
     public Registration(String userId, String email) {

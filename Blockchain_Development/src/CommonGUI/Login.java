@@ -1,12 +1,17 @@
 package CommonGUI;
 
 import Classes.LoginVerification;
+import HelperClass.Blockchain;
+import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-
 public class Login extends javax.swing.JFrame {
+
+    final private static String filePath = System.getProperty("user.dir") + System.getProperty("file.separator") + "src" + System.getProperty("file.separator") + "Database";
+    private static String masterFolder = filePath + "/master";
+    private static String blockchainFilePath = masterFolder + "/chain.bin";
 
     public Login() {
         initComponents();
@@ -141,29 +146,40 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ckbShowPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ckbShowPasswordActionPerformed
-        if(ckbShowPassword.isSelected()) {
-            txtPassword.setEchoChar((char)0);
-        }else {
+        if (ckbShowPassword.isSelected()) {
+            txtPassword.setEchoChar((char) 0);
+        } else {
             txtPassword.setEchoChar('*');
         }
     }//GEN-LAST:event_ckbShowPasswordActionPerformed
 
     private void btnSignInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignInActionPerformed
         String userName, password, userRole;
-        
+
         userName = txtUsername.getText();
         password = String.valueOf(txtPassword.getPassword());
         userRole = cmbUserRole.getSelectedItem().toString();
-                
-        
+
         try {
             LoginVerification.verifyLogin(userName, password, userRole, this);
         } catch (SecurityException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
+        // setup blockchain file
+        Blockchain bc = Blockchain.getInstance(blockchainFilePath);
+        if (!new File(blockchainFilePath).exists()) {
+            System.err.println("Creating Blockchain Binary");
+            new File(masterFolder).mkdir();
+            bc.genesis();
+            bc.distribute();
+        } else {
+            bc.distribute();
+        }
     }//GEN-LAST:event_btnSignInActionPerformed
 
     /**

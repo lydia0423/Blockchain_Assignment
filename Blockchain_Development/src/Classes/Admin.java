@@ -1,18 +1,24 @@
 package Classes;
 
+import HelperClass.Asymmetric;
 import HelperClass.FileHandler;
 import HelperClass.FileMethods;
+import HelperClass.KeyAccess;
+import HelperClass.MyKeyPair;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.security.PublicKey;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.UUID;
 import javax.swing.JOptionPane;
 
 public class Admin extends Registration implements FileMethods{
+    final private static String filePath = System.getProperty("user.dir") + System.getProperty("file.separator") + "src" + System.getProperty("file.separator") + "Database";
+    
     private String userRole, password;
     
     public Admin(String userId, String name, String icOrPassportNumber, String email, String userRole, String password) {
@@ -70,7 +76,22 @@ public class Admin extends Registration implements FileMethods{
     }
     
     // save new registration into file
-    public static void saveAdminRegistration(Admin admin) {
+    public static void saveAdminRegistration(Admin admin) throws Exception {
+        // generate public and private key for each user
+        String pubFilePath = filePath + "/KeyPair/Admin/PublicKey/" + admin.getUserId();
+        String priFilePath = filePath + "/KeyPair/Admin/PrivateKey/" + admin.getUserId();
+
+        Asymmetric asymm = new Asymmetric();
+        MyKeyPair.create();
+        byte[] publicKey = MyKeyPair.getPublicKey().getEncoded();
+        byte[] privateKey = MyKeyPair.getPrivateKey().getEncoded();
+        
+        MyKeyPair.put(publicKey, pubFilePath);
+        MyKeyPair.put(privateKey, priFilePath);
+        
+        // write data into database
+        PublicKey pubKey = KeyAccess.getPublicKey(pubFilePath);
+        
         String fileName = admin.setFileName() + ".txt";
         
         File myFile = FileHandler.createFilePath("Admin", fileName);
@@ -85,7 +106,7 @@ public class Admin extends Registration implements FileMethods{
             bw.newLine();
             bw.write(admin.getUserRole());
             bw.newLine();
-            bw.write(admin.getPassword());   
+            bw.write(asymm.publicKey(admin.getPassword(), pubKey));   
         } catch (IOException e) {
             JOptionPane.showMessageDialog(null, "Failed to save registration. Please try again.", "Register Admin Account Failed", JOptionPane.ERROR_MESSAGE);
             System.out.println("Error occurred: " + e);

@@ -2,7 +2,8 @@ package CommonGUI;
 
 import Classes.Admin;
 import javax.swing.JOptionPane;
-import HelperClass.EncryptAndDecrypt;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class AdminAccountRegistration extends javax.swing.JFrame {
 
@@ -75,7 +76,7 @@ public class AdminAccountRegistration extends javax.swing.JFrame {
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
         // retrieve data from form
-        String userId, name, icOrPassport, email, password, userRole, encryptedPassword;
+        String userId, name, icOrPassport, email, password, userRole;
         
         userId = txtUserId.getText();
         name = txtName.getText();
@@ -89,13 +90,15 @@ public class AdminAccountRegistration extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Please ensure that all fields have been filled in", "Invalid Data Entered", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        
-        // encrypt password
-        encryptedPassword = EncryptAndDecrypt.encryptPassword(password);
-        
+              
         // create an instance Admin and save it to the database
-        Admin admin = new Admin(userId, name, icOrPassport, email, userRole, encryptedPassword);
-        Admin.saveAdminRegistration(admin);
+        Admin admin = new Admin(userId, name, icOrPassport, email, userRole, password);
+        
+        try {
+            Admin.saveAdminRegistration(admin);
+        } catch (Exception ex) {
+            Logger.getLogger(AdminAccountRegistration.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
         int n = JOptionPane.showConfirmDialog(null, "Registration has been saved. Add another admin account?", "Admin account added", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         

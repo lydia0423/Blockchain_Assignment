@@ -8,12 +8,12 @@ public class FileHandler {
 
     public static File retrievePath(String folderName, String fileName) {
         String path;
-        if (fileName.equals("null")) { // retrieve folder path
-            path = textFilePath + System.getProperty("file.seperator") + folderName;
-        } else { // retreive specific path
-            path = textFilePath + System.getProperty("file.seperator") + folderName + System.getProperty("file.seperator") + fileName;
-        }
+        if (fileName.equals("null")) {//Retrieve folder path
+            path = textFilePath + System.getProperty("file.separator") + folderName;
 
+        } else {//Retrieve specific file path
+            path = textFilePath + System.getProperty("file.separator") + folderName + System.getProperty("file.separator") + fileName;
+        }
         return new File(path);
     }
 
@@ -28,8 +28,8 @@ public class FileHandler {
         }
 
         // check and create the folder to hold text files of a specifc type
-        String classFolder = textFolder + System.getProperty("file.seperator") + folderName;
-        File saveLocation = new File(classFolder, fileName);
+        String classFolder = textFolder + System.getProperty("file.separator") + folderName;
+        File saveLocation = new File(classFolder);
 
         if (!saveLocation.exists()) {
             saveLocation.mkdir();
