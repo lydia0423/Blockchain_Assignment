@@ -85,8 +85,8 @@ public class Doctor extends Registration implements FileMethods {
     // save new registration into file
     public static void saveDoctorRegistration(Doctor doctor) throws Exception {
         // generate public and private key for each user
-        String pubFilePath = filePath + "/KeyPair/Admin/PublicKey/" + doctor.getUserId();
-        String priFilePath = filePath + "/KeyPair/Admin/PrivateKey/" + doctor.getUserId();
+        String pubFilePath = filePath + "/KeyPair/Doctor/PublicKey/" + doctor.getUserId();
+        String priFilePath = filePath + "/KeyPair/Doctor/PrivateKey/" + doctor.getUserId();
         Asymmetric asymm = new Asymmetric();
         MyKeyPair.create();
         byte[] publicKey = MyKeyPair.getPublicKey().getEncoded();

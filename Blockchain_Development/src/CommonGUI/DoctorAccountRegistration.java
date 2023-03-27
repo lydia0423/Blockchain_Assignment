@@ -101,7 +101,7 @@ public class DoctorAccountRegistration extends javax.swing.JFrame {
             Logger.getLogger(DoctorAccountRegistration.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        int n = JOptionPane.showConfirmDialog(null, "Registration has been saved. Add another admin account?", "Admin account added", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        int n = JOptionPane.showConfirmDialog(null, "Registration has been saved. Add another doctor account?", "Doctor account added", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         
         if(n == JOptionPane.YES_NO_OPTION){
             // if yes, reset the form

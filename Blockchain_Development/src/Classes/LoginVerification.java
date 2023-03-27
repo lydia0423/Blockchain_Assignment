@@ -66,7 +66,7 @@ public class LoginVerification {
             for(Doctor doctorAccount : allDoctorAccounts){
                 if(userName.equals(doctorAccount.getEmail()) && password.equals(authenticatePassword("Doctor", doctorAccount.getUserId(), doctorAccount.getPassword()))){
                     JOptionPane.showMessageDialog(null, "Valid Credentials", "Login Success!", JOptionPane.INFORMATION_MESSAGE);
-                    new DoctorDashboard(doctorAccount.getUserId()).setVisible(true);
+                    new DoctorDashboard().setVisible(true);
                     jframe.dispose();
                 }else{
                     JOptionPane.showMessageDialog(null, "Invalid Credentials", "Login Failed!", JOptionPane.ERROR_MESSAGE);
