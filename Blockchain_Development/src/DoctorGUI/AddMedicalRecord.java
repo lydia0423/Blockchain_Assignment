@@ -238,6 +238,8 @@ public class AddMedicalRecord extends javax.swing.JFrame {
 
     private void btnAddMedicalRecordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddMedicalRecordActionPerformed
         try {
+            String appointmentId = null, patientId = null, name = null, icOrPassportNumber = null, 
+                    appointmentDate = null, appointmentTime = null, doctorName = null, appointmentStatus = null;
             String userId, doctorNote;
             userId = txtUserId.getText();
             doctorNote = txtDoctorNote.getText();
@@ -245,6 +247,24 @@ public class AddMedicalRecord extends javax.swing.JFrame {
             String priFilePath = filePath + "/KeyPair/Patient/PrivateKey/" + lblDoctorId.getText();
             PrivateKey doctorPrivateKey = KeyAccess.getPrivateKey(priFilePath);
             Doctor.saveMedicalRecordIntoBlockchain(userId, doctorNote, doctorPrivateKey);
+            
+            // update appointment status       
+            ArrayList<Appointment> allAppointments = new ArrayList<>();
+            allAppointments = Appointment.getAllAppointments();
+            for(Appointment appointment : allAppointments) {
+                if(cmbAppointmentId.getSelectedItem().toString().equals(appointment.getAppointmentId())){
+                    appointmentId = appointment.getAppointmentId();
+                    patientId = appointment.getUserId();
+                    name = appointment.getName();
+                    icOrPassportNumber = appointment.getIcOrPassportNumber();
+                    appointmentDate = appointment.getAppointmentDate();
+                    appointmentTime = appointment.getAppointmentTime();
+                    doctorName = appointment.getDoctorName();
+                    appointmentStatus = "Completed";
+                }
+            }
+            Appointment appointment = new Appointment(appointmentId, patientId, name, icOrPassportNumber, appointmentDate, appointmentTime, doctorName, appointmentStatus);
+            Appointment.saveAppointment(appointment);
         } catch (Exception ex) {
             Logger.getLogger(AddMedicalRecord.class.getName()).log(Level.SEVERE, null, ex);
         }
