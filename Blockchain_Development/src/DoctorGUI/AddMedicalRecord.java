@@ -244,7 +244,7 @@ public class AddMedicalRecord extends javax.swing.JFrame {
             userId = txtUserId.getText();
             doctorNote = txtDoctorNote.getText();
             // save into blockchain
-            String priFilePath = filePath + "/KeyPair/Patient/PrivateKey/" + lblDoctorId.getText();
+            String priFilePath = filePath + "/KeyPair/Doctor/PrivateKey/" + lblDoctorId.getText();
             PrivateKey doctorPrivateKey = KeyAccess.getPrivateKey(priFilePath);
             Doctor.saveMedicalRecordIntoBlockchain(userId, doctorNote, doctorPrivateKey);
             
