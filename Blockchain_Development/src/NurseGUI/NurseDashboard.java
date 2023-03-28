@@ -98,11 +98,11 @@ public class NurseDashboard extends javax.swing.JFrame {
         jLabel6.setText("Doctor's Name");
         jLabel6.setFont(new java.awt.Font("Sitka Subheading", 1, 14)); // NOI18N
 
-        txtICPassport.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         txtICPassport.setBackground(new java.awt.Color(153, 153, 153));
+        txtICPassport.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
 
-        txtName.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         txtName.setBackground(new java.awt.Color(153, 153, 153));
+        txtName.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
 
         cmbDoctorName.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         cmbDoctorName.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
@@ -148,7 +148,7 @@ public class NurseDashboard extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(254, 254, 254)
                 .addComponent(btnBookAppointment)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addComponent(btnRegisterNewPatient)
                 .addGap(35, 35, 35))
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -192,7 +192,7 @@ public class NurseDashboard extends javax.swing.JFrame {
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(cmbDoctorName, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBookAppointment, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnRegisterNewPatient, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -219,7 +219,7 @@ public class NurseDashboard extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBookAppointmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBookAppointmentActionPerformed
-        String appointmentId, userId, name, icOrPassportNumber, appointmentDateString, appointmentTime, doctorName;
+        String appointmentId, userId, name, icOrPassportNumber, appointmentDateString, appointmentTime, doctorName, appointmentStatus;
         LocalDate appointmentDate;
         
         appointmentId = Appointment.generateAppointmentId();        
@@ -229,6 +229,7 @@ public class NurseDashboard extends javax.swing.JFrame {
         appointmentDate = dpAppointmentDate.getDate();
         appointmentTime = cmbAppointmentTime.getSelectedItem().toString();
         doctorName = cmbDoctorName.getSelectedItem().toString();
+        appointmentStatus = "Booked";
         
         if (userId.isEmpty() || name.isEmpty() || icOrPassportNumber.isEmpty() || appointmentDate == null || doctorName.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Please ensure that all fields have been filled in", "Invalid Data Entered", JOptionPane.ERROR_MESSAGE);
@@ -237,7 +238,7 @@ public class NurseDashboard extends javax.swing.JFrame {
         
         appointmentDateString = appointmentDate.format(DateTimeFormatter.ISO_DATE);
         
-        Appointment appointment = new Appointment(appointmentId, userId, name, icOrPassportNumber, appointmentDateString, appointmentTime, doctorName);
+        Appointment appointment = new Appointment(appointmentId, userId, name, icOrPassportNumber, appointmentDateString, appointmentTime, doctorName, appointmentStatus);
         Appointment.saveAppointment(appointment);
         
         int n = JOptionPane.showConfirmDialog(null, "Appointment has been saved. Add another appointment?", "Appointment created", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
@@ -287,8 +288,9 @@ public class NurseDashboard extends javax.swing.JFrame {
 
     private void txtUserIdKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUserIdKeyReleased
         ArrayList<Patient> allPatients = new ArrayList<>();
+        allPatients = Patient.getAllPatientAccounts();
         for(Patient patient : allPatients) {
-            if(txtUserId.getText() == patient.getUserId()) {
+            if(txtUserId.getText().equals(patient.getUserId())) {
                 txtName.setText(patient.getName());
                 txtICPassport.setText(patient.getIcOrPassportNumber());
             }

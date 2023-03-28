@@ -13,9 +13,9 @@ import java.util.UUID;
 import javax.swing.JOptionPane;
 
 public class Appointment implements FileMethods{
-    private String appointmentId, userId, name, icOrPassportNumber, appointmentDate, appointmentTime, doctorName;
+    private String appointmentId, userId, name, icOrPassportNumber, appointmentDate, appointmentTime, doctorName, appointmentStatus;
 
-    public Appointment(String appointmentId, String userId, String name, String icOrPassportNumber, String appointmentDate, String appointmentTime, String doctorName) {
+    public Appointment(String appointmentId, String userId, String name, String icOrPassportNumber, String appointmentDate, String appointmentTime, String doctorName, String appointmentStatus) {
         this.appointmentId = appointmentId;
         this.userId = userId;
         this.name = name;
@@ -23,6 +23,7 @@ public class Appointment implements FileMethods{
         this.appointmentDate = appointmentDate;
         this.appointmentTime = appointmentTime;
         this.doctorName = doctorName;
+        this.appointmentStatus = appointmentStatus;
     }
 
     public String getAppointmentId() {
@@ -80,6 +81,16 @@ public class Appointment implements FileMethods{
     public void setDoctorName(String doctorName) {
         this.doctorName = doctorName;
     }
+
+    public String getAppointmentStatus() {
+        return appointmentStatus;
+    }
+
+    public void setAppointmentStatus(String appointmentStatus) {
+        this.appointmentStatus = appointmentStatus;
+    }
+    
+    
     
     // generate random combination of number and alphabet for appointment Id
     public static String generateAppointmentId() {
@@ -103,6 +114,7 @@ public class Appointment implements FileMethods{
                         readFile.nextLine(),
                         readFile.nextLine(),
                         readFile.nextLine(),
+                        readFile.nextLine(),
                         readFile.nextLine()
                     ));
                 }
@@ -113,7 +125,7 @@ public class Appointment implements FileMethods{
         
         return allAppointments;
     }
-
+    
     // save new appointment into file
     public static void saveAppointment(Appointment appointment){
         String fileName = appointment.setFileName() + ".txt";
@@ -133,12 +145,43 @@ public class Appointment implements FileMethods{
             bw.write(appointment.getAppointmentTime());   
             bw.newLine();
             bw.write(appointment.getDoctorName()); 
+            bw.newLine();
+            bw.write(appointment.getAppointmentStatus()); 
         } catch (IOException e) {
             JOptionPane.showMessageDialog(null, "Failed to save appointment. Please try again.", "Create New Appointment Failed", JOptionPane.ERROR_MESSAGE);
             System.out.println("Error occurred: " + e);
         }
         
         JOptionPane.showMessageDialog(null, "Appointment successfully saved.", "Create New Appointment Success!", JOptionPane.INFORMATION_MESSAGE);
+    }
+    
+    // save new appointment into file
+    public static void updateAppointment(Appointment appointment){
+        String fileName = appointment.setFileName() + ".txt";
+        
+        File myFile = FileHandler.createFilePath("Appointment", fileName);
+        try (FileWriter fw = new FileWriter(myFile); BufferedWriter bw = new BufferedWriter(fw);) {
+            bw.write(appointment.getAppointmentId());
+            bw.newLine();
+            bw.write(appointment.getUserId());
+            bw.newLine();
+            bw.write(appointment.getName());
+            bw.newLine();
+            bw.write(appointment.getIcOrPassportNumber());
+            bw.newLine();
+            bw.write(appointment.getAppointmentDate());
+            bw.newLine();
+            bw.write(appointment.getAppointmentTime());   
+            bw.newLine();
+            bw.write(appointment.getDoctorName()); 
+            bw.newLine();
+            bw.write(appointment.getAppointmentStatus()); 
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "Failed to update appointment. Please try again.", "Update Appointment Failed", JOptionPane.ERROR_MESSAGE);
+            System.out.println("Error occurred: " + e);
+        }
+        
+        JOptionPane.showMessageDialog(null, "Appointment successfully saved.", "Update Appointment Success!", JOptionPane.INFORMATION_MESSAGE);
     }
     
 
