@@ -122,13 +122,13 @@ public class Doctor extends Registration implements FileMethods {
     }
     
     // save medical transaction into blockchain
-    public static void saveMedicalRecordIntoBlockchain(String userId, String doctorNote, PrivateKey doctorPrivateKey) throws Exception {
+    public static void saveMedicalRecordIntoBlockchain(String userId, String doctorNote, String doctorName, PrivateKey doctorPrivateKey) throws Exception {
         Blockchain bc = Blockchain.getInstance(blockchainFilePath);
         Transaction tranxList = new Transaction();
         DigitalSignature sig = new DigitalSignature();
         
         String signature = sig.sign(doctorNote, doctorPrivateKey);
-        tranxList.add(doctorNote + "|" + signature);
+        tranxList.add(doctorNote + "|" + doctorName + "|" + signature);
         
         String previousHash = bc.get().getLast().getBlockHeader().getCurrentHash();
         Block block = new Block(previousHash, tranxList.getMerkleRoot(), userId);

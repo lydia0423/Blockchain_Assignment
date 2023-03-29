@@ -2,7 +2,6 @@ package DoctorGUI;
 
 import Classes.Appointment;
 import Classes.Doctor;
-import Classes.Patient;
 import HelperClass.Block;
 import HelperClass.Blockchain;
 import HelperClass.Hasher;
@@ -26,9 +25,9 @@ public class AddMedicalRecord extends javax.swing.JFrame {
         initComponents();
     }
 
-    public AddMedicalRecord(String userId) {
+    public AddMedicalRecord(String doctorId) {
         initComponents();
-        lblDoctorId.setText(userId);
+        lblDoctorId.setText(doctorId);
     }
 
     @SuppressWarnings("unchecked")
@@ -188,7 +187,7 @@ public class AddMedicalRecord extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnLogout)
                     .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmbAppointmentId, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
@@ -243,10 +242,6 @@ public class AddMedicalRecord extends javax.swing.JFrame {
             String userId, doctorNote;
             userId = txtUserId.getText();
             doctorNote = txtDoctorNote.getText();
-            // save into blockchain
-            String priFilePath = filePath + "/KeyPair/Doctor/PrivateKey/" + lblDoctorId.getText();
-            PrivateKey doctorPrivateKey = KeyAccess.getPrivateKey(priFilePath);
-            Doctor.saveMedicalRecordIntoBlockchain(userId, doctorNote, doctorPrivateKey);
             
             // update appointment status       
             ArrayList<Appointment> allAppointments = new ArrayList<>();
@@ -265,6 +260,13 @@ public class AddMedicalRecord extends javax.swing.JFrame {
             }
             Appointment appointment = new Appointment(appointmentId, patientId, name, icOrPassportNumber, appointmentDate, appointmentTime, doctorName, appointmentStatus);
             Appointment.saveAppointment(appointment);
+            
+            // save into blockchain
+            String priFilePath = filePath + "/KeyPair/Doctor/PrivateKey/" + lblDoctorId.getText();
+            PrivateKey doctorPrivateKey = KeyAccess.getPrivateKey(priFilePath);
+            Doctor.saveMedicalRecordIntoBlockchain(userId, doctorNote, doctorName, doctorPrivateKey);
+            
+            
         } catch (Exception ex) {
             Logger.getLogger(AddMedicalRecord.class.getName()).log(Level.SEVERE, null, ex);
         }
