@@ -178,7 +178,7 @@ public class Login extends javax.swing.JFrame {
             bc.genesis();
             bc.distribute();
         } else {
-            bc.distribute();
+            System.out.println(bc.get());
         }
     }//GEN-LAST:event_btnSignInActionPerformed
 

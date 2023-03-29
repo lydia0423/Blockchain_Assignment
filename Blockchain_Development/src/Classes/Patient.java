@@ -175,8 +175,8 @@ public class Patient extends Registration implements FileMethods{
         tranxList.add(tranxInformation + "|" + signature);
         
         String previousHash = bc.get().getLast().getBlockHeader().getCurrentHash();
-        Block block = new Block(previousHash, tranxList.getMerkleRoot(), patient.getUserId());
         int currentLength = bc.get().size();
+        Block block = new Block(previousHash, tranxList.getMerkleRoot(), patient.getUserId());
         block.blockHeader.setIndex(currentLength);
         block.setTranxList(tranxList);
         bc.nextBlock(block);

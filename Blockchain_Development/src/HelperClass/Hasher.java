@@ -22,5 +22,5 @@ public class Hasher {
         }
 
         return hashCode;
-    }
+    }  
 }
