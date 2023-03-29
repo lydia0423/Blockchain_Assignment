@@ -132,6 +132,7 @@ public class AddMedicalRecord extends javax.swing.JFrame {
         lblDoctorId.setForeground(new java.awt.Color(255, 255, 255));
         lblDoctorId.setText("jLabel4");
 
+        txtMedicalRecord.setBackground(new java.awt.Color(153, 153, 153));
         txtMedicalRecord.setColumns(20);
         txtMedicalRecord.setRows(5);
         jScrollPane1.setViewportView(txtMedicalRecord);
