@@ -5,6 +5,7 @@ import HelperClass.Blockchain;
 import HelperClass.DigitalSignature;
 import HelperClass.FileHandler;
 import HelperClass.FileMethods;
+import HelperClass.Hasher;
 import HelperClass.MyKeyPair;
 import HelperClass.Transaction;
 import java.io.BufferedWriter;
@@ -176,7 +177,7 @@ public class Patient extends Registration implements FileMethods{
         
         String previousHash = bc.get().getLast().getBlockHeader().getCurrentHash();
         int currentLength = bc.get().size();
-        Block block = new Block(previousHash, tranxList.getMerkleRoot(), patient.getUserId());
+        Block block = new Block(previousHash, tranxList.getMerkleRoot(), Hasher.sha256(patient.getUserId()));
         block.blockHeader.setIndex(currentLength);
         block.setTranxList(tranxList);
         bc.nextBlock(block);

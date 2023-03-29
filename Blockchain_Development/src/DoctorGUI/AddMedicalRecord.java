@@ -298,10 +298,10 @@ public class AddMedicalRecord extends javax.swing.JFrame {
             for(Block block : bc.get()){
                 if(Hasher.sha256(txtUserId.getText()).equals(block.blockHeader.getUserIdHash())) {
                     String pastMedicalRecord = block.tranxList.toString();
-                    String[] data = pastMedicalRecord.split("\\|");
+                    String data = pastMedicalRecord.split("\\[")[2].split("\\|")[0];
 
-                    if(!data[0].equals("Create new patient account")){
-                        txtMedicalRecord.setText(data[0]);
+                    if(!data.equals("Create new patient account")){
+                        txtMedicalRecord.setText(data);
                     }
                 }
             }
