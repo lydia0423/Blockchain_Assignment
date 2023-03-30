@@ -1,6 +1,7 @@
 package CommonGUI;
 
 import Classes.Admin;
+import NurseGUI.NurseDashboard;
 import javax.swing.JOptionPane;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -126,9 +127,7 @@ public class AdminAccountRegistration extends javax.swing.JFrame {
                     .addComponent(jLabel3))
                 .addGap(10, 10, 10)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel4))
+                    .addComponent(jLabel4)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(8, 8, 8)
                         .addComponent(txtICOrPassportNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -194,6 +193,9 @@ public class AdminAccountRegistration extends javax.swing.JFrame {
             txtEmail.setText("");
             txtPassword.setText("");
             txtUserId.setText(Admin.generateAdminId());
+        }else{
+            new Login().setVisible(true);
+            this.setVisible(false);
         }
     }//GEN-LAST:event_btnRegisterActionPerformed
 

@@ -186,6 +186,9 @@ public class DoctorAccountRegistration extends javax.swing.JFrame {
             txtEmail.setText("");
             txtPassword.setText("");
             txtUserId.setText(Admin.generateAdminId());
+        }else{
+            new Login().setVisible(true);
+            this.setVisible(false);
         }
     }//GEN-LAST:event_btnRegisterActionPerformed
 

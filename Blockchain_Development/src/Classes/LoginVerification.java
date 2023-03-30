@@ -4,6 +4,7 @@ import DoctorGUI.AddMedicalRecord;
 import DoctorGUI.DoctorDashboard;
 import HelperClass.Asymmetric;
 import HelperClass.KeyAccess;
+import NurseGUI.AdminDashboard;
 import NurseGUI.NurseDashboard;
 import java.io.IOException;
 import java.security.PrivateKey;
@@ -55,7 +56,7 @@ public class LoginVerification {
             for(Admin adminAccount : allAdminAccounts){
                 if(userName.equals(adminAccount.getEmail()) && password.equals(authenticatePassword("Admin", adminAccount.getUserId(), adminAccount.getPassword()))){
                     JOptionPane.showMessageDialog(null, "Valid Credentials", "Login Success!", JOptionPane.INFORMATION_MESSAGE);
-                    new NurseDashboard().setVisible(true);
+                    new AdminDashboard().setVisible(true);
                     jframe.dispose();
                 }else{
                     JOptionPane.showMessageDialog(null, "Invalid Credentials", "Login Failed!", JOptionPane.ERROR_MESSAGE);
